@@ -1,0 +1,32 @@
+vector<int> Solution::primesum(int A) {
+    vector<bool> sieve( A+1 , true);
+    vector<int> primes;
+    sieve[0] = false;
+    sieve[1] = false;
+    for(int i =2; i*i<=A ; i++){
+        if(sieve[i]){
+            for(int j= i*i ; j<=A ; j+=i){
+                sieve[j] = false;
+            }
+        }
+    }
+
+    for(int i = 2 ; i<=A ; i++){
+        if(sieve[i])
+            primes.push_back(i);
+    }
+    vector<int> ans;
+    for(int first = 2; first<=A ; first++){
+        if(sieve[first]){
+            int second = A - first;
+            if(sieve[second]){
+                ans.push_back(first);
+                ans.push_back(second);
+                break;
+            }
+        }
+    }
+
+    return ans;
+
+}
