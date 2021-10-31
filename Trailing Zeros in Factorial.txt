@@ -1,0 +1,14 @@
+/**
+ * @input A : Integer
+ * 
+ * @Output Integer
+ */
+int trailingZeroes(int A) {
+    int ans = 0;
+    int base = 5;
+    while(A >= base){
+        ans += A/base;
+        base = base*5;
+    }
+    return ans;
+}
