@@ -1,0 +1,27 @@
+vector<vector<int> > Solution::solve(int n) {
+    vector<vector<int> > result;
+
+    if(n==0) return result;
+
+    vector<int> t;
+    t.push_back(1);
+    result.push_back(t);
+
+    if(n==1) return result;
+
+    vector<int> tt;
+    tt.push_back(1);
+    tt.push_back(1);
+    result.push_back(tt);
+
+    for(int i=2;i<n;i++){
+        vector<int> temp;
+        temp.push_back(1);
+        for(int j=1;j<i;j++){
+            temp.push_back(result[i-1][j-1] + result[i-1][j]);
+        }
+        temp.push_back(1);
+        result.push_back(temp);
+    }
+    return result;
+}
