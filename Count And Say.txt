@@ -1,0 +1,20 @@
+string Solution::countAndSay(int n) {
+    string x="1";
+    string ans = "";
+    for(int i=2;i<=n;i++){
+        int j=0;
+        int len = x.length();
+        ans="";
+        while(j<len){
+            char c = x[j];
+            int repeat = 0;
+            while(j<len&&x[j]==c){
+                j++;
+                repeat++;
+            }
+            ans += to_string(repeat)+c;
+        }
+        x = ans;
+    }
+    return x;
+}
